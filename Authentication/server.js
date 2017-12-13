@@ -16,6 +16,11 @@ app.use(bodyParser.json());
 
 app.use(morgon('dev'));
 
+//routes
+apiRoutes.get('/', function(req,res){
+    res.json({ message: 'WElcome'});
+})
+
 apiRoutes.post('/register',function(req,res){
     console.log('Register post request');
     users.saveUser(req,res); 
@@ -44,12 +49,6 @@ apiRoutes.use(function(req,res,next){
         });
     }
 });
-
-//routes
-apiRoutes.get('/', function(req,res){
-    res.json({ message: 'WElcome'});
-})
-
 
 apiRoutes.get('/users',function(req,res){
    /*  User.find({},function(err,users){
