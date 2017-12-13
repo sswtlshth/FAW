@@ -5,6 +5,7 @@ var mongoose=require('mongoose');
 var morgon = require('morgan');
 var jwt = require('jsonwebtoken');
 var User = require('./app/model/user');
+var star = require('./app/model/star');
 var users= require('./app/controller/users.server.controller');
 var config= require('./config');
 var apiRoutes = express.Router();
