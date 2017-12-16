@@ -5,6 +5,7 @@ var mongoose=require('mongoose');
 var morgon = require('morgan');
 var jwt = require('jsonwebtoken');
 var User = require('./app/model/user');
+var star = require('./app/model/star');
 var users= require('./app/controller/users.server.controller');
 var config= require('./config');
 var apiRoutes = express.Router();
@@ -15,6 +16,11 @@ app.use(bodyParser.urlencoded({extended : false}));
 app.use(bodyParser.json());
 
 app.use(morgon('dev'));
+
+//routes
+apiRoutes.get('/', function(req,res){
+    res.json({ message: 'WElcome'});
+})
 
 apiRoutes.post('/register',function(req,res){
     console.log('Register post request');
@@ -44,12 +50,6 @@ apiRoutes.use(function(req,res,next){
         });
     }
 });
-
-//routes
-apiRoutes.get('/', function(req,res){
-    res.json({ message: 'WElcome'});
-})
-
 
 apiRoutes.get('/users',function(req,res){
    /*  User.find({},function(err,users){
